@@ -12,6 +12,8 @@
 @implementation EditFriendsViewController
 
 UIColor *disclosureColor;
+NSArray *searchResults;
+NSArray *allUsers;
 
 - (void)viewDidLoad
 {
@@ -34,6 +36,27 @@ UIColor *disclosureColor;
     disclosureColor = [UIColor colorWithRed:0.553 green:0.439 blue:0.718 alpha:1.0];
 }
 
+#pragma mark - Search Controller
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+   
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    searchResults = [self.allUsers filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -44,8 +67,13 @@ UIColor *disclosureColor;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [self.allUsers count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+        
+    } else {
+        return [self.allUsers count];
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -53,8 +81,45 @@ UIColor *disclosureColor;
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
-    cell.textLabel.text = user.username;
+    PFUser *user = nil;
+    
+    
+    
+    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //dispatch_async(queue, ^{
+        // 1. Get email address
+     //   NSString *email = [user objectForKey:@"email"];
+        
+        // 2. Create the md5 hash
+      //  NSURL *gravatarUrl = [GravatarUrlBuilder getGravatarUrl:email];
+        
+        // 3. Request the image from Gravatar
+      //  NSData *imageData = [NSData dataWithContentsOfURL:gravatarUrl];
+        
+      //  if (imageData != nil) {
+       //     dispatch_async(dispatch_get_main_queue(), ^{
+                // 4. Set image in cell
+       //         cell.imageView.image = [UIImage imageWithData:imageData];
+     //           [cell setNeedsLayout];
+     //       });
+     //   }
+  //  });
+    
+   // cell.imageView.image = [UIImage imageNamed:@"icon_person"];
+    
+    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Display person in the table cell
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        user = [searchResults objectAtIndex:indexPath.row];
+    } else {
+        user = [self.allUsers objectAtIndex:indexPath.row];
+    }
+    
     
     if ([self isFriend:user]) {
         cell.accessoryView = [MSCellAccessory accessoryWithType:FLAT_CHECKMARK color:disclosureColor];
@@ -63,28 +128,8 @@ UIColor *disclosureColor;
         cell.accessoryView = nil;
     }
     
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        // 1. Get email address
-        NSString *email = [user objectForKey:@"email"];
-        
-        // 2. Create the md5 hash
-        NSURL *gravatarUrl = [GravatarUrlBuilder getGravatarUrl:email];
-        
-        // 3. Request the image from Gravatar
-        NSData *imageData = [NSData dataWithContentsOfURL:gravatarUrl];
-        
-        if (imageData != nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // 4. Set image in cell
-                cell.imageView.image = [UIImage imageWithData:imageData];
-                [cell setNeedsLayout];
-            });
-        }
-    });
-    
-    cell.imageView.image = [UIImage imageNamed:@"icon_person"];
-    
+    cell.textLabel.text = user.username;
+
     return cell;
 }
 

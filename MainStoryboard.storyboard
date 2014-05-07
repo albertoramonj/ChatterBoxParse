@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-59" y="227"/>
         </scene>
-        <!--Login View Controller - ChatterBox-->
+        <!--Login View Controller - Chatter-->
         <scene sceneID="jhv-qo-Efw">
             <objects>
                 <viewController id="BA1-Cp-RJu" customClass="LoginViewController" sceneMemberID="viewController">
@@ -141,7 +141,7 @@
                             <constraint firstItem="rTm-s2-w90" firstAttribute="top" secondItem="cZF-ds-FrG" secondAttribute="bottom" id="svH-CP-Wt9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ChatterBox" id="Xza-Tr-b7l"/>
+                    <navigationItem key="navigationItem" title="Chatter" id="Xza-Tr-b7l"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -197,9 +197,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="avV-3m-LHe">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="fyZ-aX-Qpn" id="GAU-aU-E4v"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="tlw-Yk-3ff">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tlw-Yk-3ff" id="Sa9-R1-yvF">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -213,8 +221,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Friends" id="LRb-8d-HpR"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Sdf-EJ-Xyo" id="dYZ-mC-gvm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRW-bH-yft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="mhT-YG-W0s">
+                    <connections>
+                        <outlet property="delegate" destination="fyZ-aX-Qpn" id="2Pf-SX-mP6"/>
+                        <outlet property="searchContentsController" destination="fyZ-aX-Qpn" id="SDd-ae-pnR"/>
+                        <outlet property="searchResultsDataSource" destination="fyZ-aX-Qpn" id="Fx1-VE-tsz"/>
+                        <outlet property="searchResultsDelegate" destination="fyZ-aX-Qpn" id="U5h-Tb-rAr"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="Sdf-EJ-Xyo">
+                    <connections>
+                        <outlet property="delegate" destination="fyZ-aX-Qpn" id="1eJ-n5-uvg"/>
+                        <outlet property="searchBar" destination="avV-3m-LHe" id="jK3-o1-eq2"/>
+                        <outlet property="searchContentsController" destination="fyZ-aX-Qpn" id="g9L-h9-hSS"/>
+                        <outlet property="searchResultsDataSource" destination="fyZ-aX-Qpn" id="6LR-O6-c52"/>
+                        <outlet property="searchResultsDelegate" destination="fyZ-aX-Qpn" id="R1j-0n-7o1"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1408" y="227"/>
         </scene>
@@ -286,7 +314,7 @@
             </objects>
             <point key="canvasLocation" x="1408" y="-947"/>
         </scene>
-        <!--Inbox View Controller - ChatterBox-->
+        <!--Inbox View Controller - Chatter-->
         <scene sceneID="K2q-hk-Jwk">
             <objects>
                 <tableViewController id="4uG-zQ-ztV" customClass="InboxViewController" sceneMemberID="viewController">
@@ -309,7 +337,7 @@
                             <outlet property="delegate" destination="4uG-zQ-ztV" id="A6l-wn-hxl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ChatterBox" id="ao4-kE-he2">
+                    <navigationItem key="navigationItem" title="Chatter" id="ao4-kE-he2">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="D3W-5L-cIi">
                             <connections>
                                 <action selector="logout:" destination="4uG-zQ-ztV" id="L7V-9m-1y3"/>
@@ -325,7 +353,7 @@
             </objects>
             <point key="canvasLocation" x="1005" y="-350"/>
         </scene>
-        <!--Signup View Controller - ChatterBox-->
+        <!--Signup View Controller - Chatter-->
         <scene sceneID="aBP-V4-woW">
             <objects>
                 <viewController id="EZc-59-qKm" customClass="SignupViewController" sceneMemberID="viewController">
@@ -438,7 +466,7 @@
                             <constraint firstAttribute="trailing" secondItem="dVI-yc-bxp" secondAttribute="trailing" id="zoa-ae-eZG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ChatterBox" id="86g-jc-CQe"/>
+                    <navigationItem key="navigationItem" title="Chatter" id="86g-jc-CQe"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="xHC-Zp-exW" id="MPX-Fr-hT6"/>
                         <outlet property="emailField" destination="9pk-dW-1XS" id="RaH-Qx-dNZ"/>

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8DCDADA717A6B3CC008AAA28"
-               BuildableName = "Ribbit.app"
-               BlueprintName = "ChatterBox"
-               ReferencedContainer = "container:ChatterBox.xcodeproj">
+               BuildableName = "Chatter.app"
+               BlueprintName = "Chatter.temp_caseinsensitive_rename"
+               ReferencedContainer = "container:Chatter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DCDADA717A6B3CC008AAA28"
-            BuildableName = "Ribbit.app"
-            BlueprintName = "ChatterBox"
-            ReferencedContainer = "container:ChatterBox.xcodeproj">
+            BuildableName = "Chatter.app"
+            BlueprintName = "Chatter.temp_caseinsensitive_rename"
+            ReferencedContainer = "container:Chatter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DCDADA717A6B3CC008AAA28"
-            BuildableName = "Ribbit.app"
-            BlueprintName = "ChatterBox"
-            ReferencedContainer = "container:ChatterBox.xcodeproj">
+            BuildableName = "Chatter.app"
+            BlueprintName = "Chatter.temp_caseinsensitive_rename"
+            ReferencedContainer = "container:Chatter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DCDADA717A6B3CC008AAA28"
-            BuildableName = "Ribbit.app"
-            BlueprintName = "ChatterBox"
-            ReferencedContainer = "container:ChatterBox.xcodeproj">
+            BuildableName = "Chatter.app"
+            BlueprintName = "Chatter.temp_caseinsensitive_rename"
+            ReferencedContainer = "container:Chatter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
